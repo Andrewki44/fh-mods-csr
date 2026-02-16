@@ -10,16 +10,18 @@ namespace Fahrenheit.Mods.CSR {
         private static class Besaid {
             public static void remove_valley(byte* code_ptr) {
                 remove(code_ptr, 0x1B29, 0x1C43); // Wakka pushes Tidus into the water
+                //remove(code_ptr, 0x3411, 0x341B); // Wakka pushes Tidus into the water
 
-                remove(code_ptr, 0x3398, 0x33C6); // Initial fadeout into cutscene
-                remove(code_ptr, 0x1CFC, 0x1FCF); // Wakka asks Tidus to join the Aurochs
+                //remove(code_ptr, 0x1CFC, 0x1FCF); // Wakka asks Tidus to join the Aurochs
 
-                // Skip the Promontory since it'd be instantly skipped anyway
-                // We essentially copy bsil0600:3EB3..3EC8 to bsil0300:1FCF..1FEA
-                set(code_ptr, 0x1FCF, AtelOp.PUSHII.build(0x7E)); // GameMoment = 124 -> GameMoment = 126
-                set(code_ptr, 0x1FD5, AtelOp.PUSHII.build(0x0F)); // Common.00BB(0) -> Common.00BB(15)
-                set(code_ptr, 0x1FE1, AtelOp.PUSHII.build(69));
-                set(code_ptr, 0x1FE7, AtelOp.CALL.build(0x11)); // Common.010C(67, 0) -> Common.transitionToMap(69, 0)
+                //// Skip the Promontory since it'd be instantly skipped anyway
+                //// We essentially copy bsil0600:3EB3..3EC8 to bsil0300:1FCF..1FEA
+                //set(code_ptr, 0x1FCF, AtelOp.PUSHII.build(0x7E)); // GameMoment = 124 -> GameMoment = 126
+                //set(code_ptr, 0x1FD5, AtelOp.PUSHII.build(0x0F)); // Common.00BB(0) -> Common.00BB(15)
+                //set(code_ptr, 0x1FE1, AtelOp.PUSHII.build(69));
+                //set(code_ptr, 0x1FE7, AtelOp.CALL.build(0x11)); // Common.010C(67, 0) -> Common.transitionToMap(69, 0)
+
+                //remove(code_ptr, 0x3398, 0x33C6); // Initial fadeout into cutscene
             }
 
             public static void remove_promontory(byte* code_ptr) {

@@ -47,40 +47,40 @@ namespace Fahrenheit.Mods.CSR {
             }
 
             public static void remove_overpass(byte* code_ptr) {
-                //TODO: Optionally skip girl's dialogue and instantly get 2 Potions
+                ////TODO: Optionally skip girl's dialogue and instantly get 2 Potions
 
-                // Remove some extra waiting
-                remove(code_ptr, 0x292A, 0x2933);
+                //// Remove some extra waiting
+                //remove(code_ptr, 0x292A, 0x2933);
 
-                // Gotta do some manual sound stuffs
-                set(code_ptr, 0x2809, AtelOp.JMP.build(0x2)); // jump our new code
+                //// Gotta do some manual sound stuffs
+                //set(code_ptr, 0x2809, AtelOp.JMP.build(0x2)); // jump our new code
 
-                byte* ptr = code_ptr + 0x2810;
+                //byte* ptr = code_ptr + 0x2810;
 
-                // BGM
-                ptr = set(ptr, 0,
-                    AtelOp.PUSHII.build(0xA1),
-                    AtelOp.CALLPOPA.build(0x102)
-                ); // call Common.setBgmToLoad(0xA1);
+                //// BGM
+                //ptr = set(ptr, 0, [
+                //    AtelOp.PUSHII.build(0xA1),
+                //    AtelOp.CALLPOPA.build(0x102)
+                //]); // call Common.setBgmToLoad(0xA1);
 
-                ptr = set(ptr, 0,
-                    AtelOp.CALLPOPA.build(0x105)); // call Common.loadBgm();
+                //ptr = set(ptr, 0,
+                //    AtelOp.CALLPOPA.build(0x105)); // call Common.loadBgm();
 
-                ptr = set(ptr, 0,
-                    AtelOp.PUSHII.build(0xA1),
-                    AtelOp.CALLPOPA.build(0x104)
-                ); // call Common.playBgm(0xA1);
+                //ptr = set(ptr, 0,
+                //    AtelOp.PUSHII.build(0xA1),
+                //    AtelOp.CALLPOPA.build(0x104)
+                //); // call Common.playBgm(0xA1);
 
-                // Zanar
-                ptr = set(ptr, 0,
-                    AtelOp.PUSHII.build(0x1),
-                    AtelOp.PUSHII.build(0x1B),
-                    AtelOp.PUSHII.build(0x6),
-                    AtelOp.REQ.build(),
-                    AtelOp.POPA.build()
-                ); // run w1Be06 (Level 1);
+                //// Zanar
+                //ptr = set(ptr, 0,
+                //    AtelOp.PUSHII.build(0x1),
+                //    AtelOp.PUSHII.build(0x1B),
+                //    AtelOp.PUSHII.build(0x6),
+                //    AtelOp.REQ.build(),
+                //    AtelOp.POPA.build()
+                //); // run w1Be06 (Level 1);
 
-                ptr = set(ptr, 0, AtelOp.JMP.build(0x3)); // go back to the game's code
+                //ptr = set(ptr, 0, AtelOp.JMP.build(0x3)); // go back to the game's code
             }
 
             public static void remove_stadium(byte* code_ptr) {

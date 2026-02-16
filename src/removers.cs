@@ -17,27 +17,40 @@ internal unsafe static partial class Removers {
         CutsceneRemoverModule.removers.Add("bsil0300", Besaid.remove_valley);
         CutsceneRemoverModule.removers.Add("bsil0600", Besaid.remove_promontory);
         CutsceneRemoverModule.removers.Add("bsil0700", Besaid.remove_village_slope);
+
+        CutsceneRemoverModule.removers.Add("nagi0500", CavernOfTheStolenFayth.remove_stolen_fayth);
     }
 
     private static void remove(byte* code_ptr, int from, int to) {
         NativeMemory.Fill(code_ptr, (nuint)(to - from), 0);
     }
 
-    private static void set(byte* code_ptr, int offset, byte value) {
-        *(code_ptr + offset) = value;
+    private static void set(byte* code_ptr, uint offset, AtelInst opcode) {
+        byte* ptr = code_ptr + offset;
+        foreach (byte b in opcode.to_bytes()) {
+            *ptr = b;
+            ptr++;
+        }
+    }
+    private static void set(byte* code_ptr, uint[] offsets, AtelInst opcode) {
+        foreach (uint offset in offsets) {
+            set(code_ptr, offset, opcode);
+        }
     }
 
-    private static byte* set(byte* code_ptr, int offset, params AtelInst[] opcodes) {
+    private static void set(byte* code_ptr, uint offset, AtelInst[] opcodes) {
         byte* ptr = code_ptr + offset;
-
-        foreach (AtelInst opcode in opcodes) {
-            foreach (byte b in opcode.to_bytes()) {
+        foreach (AtelInst op in opcodes) {
+            foreach (byte b in op.to_bytes()) {
                 *ptr = b;
                 ptr++;
             }
         }
-
-        return ptr;
+    }
+    private static void set(byte* code_ptr, uint[] offsets, AtelInst[] opcodes) {
+        foreach (uint offset in offsets) {
+            set(code_ptr, offset, opcodes);
+        }
     }
 
     private static void set_tp(byte* code_ptr, int offset, ushort x_idx, ushort y_idx, ushort z_idx) {
