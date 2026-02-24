@@ -1,5 +1,5 @@
-﻿using Fahrenheit.Core.FFX;
-using Fahrenheit.Core.Atel;
+﻿using Fahrenheit.FFX;
+using Fahrenheit.Atel;
 using System.Runtime.InteropServices;
 
 namespace Fahrenheit.Mods.CSR;
