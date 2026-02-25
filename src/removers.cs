@@ -1,6 +1,7 @@
-﻿using Fahrenheit.Core.FFX;
-using Fahrenheit.Core.Atel;
+﻿using Fahrenheit.Core.Atel;
+using Fahrenheit.Core.FFX;
 using System.Runtime.InteropServices;
+using TerraFX.Interop.Windows;
 
 namespace Fahrenheit.Mods.CSR;
 
@@ -12,33 +13,36 @@ internal unsafe static partial class Removers {
         CutsceneRemoverModule.removers.Add("znkd1300", DreamZanarkand.remove_stadium);
         CutsceneRemoverModule.removers.Add("znkd1200", DreamZanarkand.remove_stadium_attacked);
 
-        CutsceneRemoverModule.removers.Add("cdsp0700", AlBhedShip.remove_underwater_ruins);
+        //CutsceneRemoverModule.removers.Add("cdsp0700", CidsShip.remove_underwater_ruins);
 
         CutsceneRemoverModule.removers.Add("bsil0300", Besaid.remove_valley);
         CutsceneRemoverModule.removers.Add("bsil0600", Besaid.remove_promontory);
         CutsceneRemoverModule.removers.Add("bsil0700", Besaid.remove_village_slope);
 
-        CutsceneRemoverModule.removers.Add("nagi0500", CavernOfTheStolenFayth.remove_stolen_fayth);
+        //CutsceneRemoverModule.removers.Add("nagi0500", CavernOfTheStolenFayth.remove_stolen_fayth);
     }
 
     private static void remove(byte* code_ptr, int from, int to) {
-        NativeMemory.Fill(code_ptr, (nuint)(to - from), 0);
+        NativeMemory.Fill(code_ptr + from, (nuint)(to - from), 0);
     }
 
-    private static void set(byte* code_ptr, uint offset, AtelInst opcode) {
+    private static byte* set(byte* code_ptr, uint offset, AtelInst opcode) {
         byte* ptr = code_ptr + offset;
         foreach (byte b in opcode.to_bytes()) {
             *ptr = b;
             ptr++;
         }
-    }
-    private static void set(byte* code_ptr, uint[] offsets, AtelInst opcode) {
-        foreach (uint offset in offsets) {
-            set(code_ptr, offset, opcode);
-        }
+        return ptr;
     }
 
-    private static void set(byte* code_ptr, uint offset, AtelInst[] opcodes) {
+    private static byte* set(byte* code_ptr, uint[] offsets, AtelInst opcode) {
+        foreach (uint offset in offsets) {
+            code_ptr = set(code_ptr, offset, opcode);
+        }
+        return code_ptr;
+    }
+
+    private static byte* set(byte* code_ptr, uint offset, AtelInst[] opcodes) {
         byte* ptr = code_ptr + offset;
         foreach (AtelInst op in opcodes) {
             foreach (byte b in op.to_bytes()) {
@@ -46,11 +50,14 @@ internal unsafe static partial class Removers {
                 ptr++;
             }
         }
+        return ptr;
     }
-    private static void set(byte* code_ptr, uint[] offsets, AtelInst[] opcodes) {
+
+    private static byte* set(byte* code_ptr, uint[] offsets, AtelInst[] opcodes) {
         foreach (uint offset in offsets) {
-            set(code_ptr, offset, opcodes);
+            code_ptr = set(code_ptr, offset, opcodes);
         }
+        return code_ptr;
     }
 
     private static void set_tp(byte* code_ptr, int offset, ushort x_idx, ushort y_idx, ushort z_idx) {

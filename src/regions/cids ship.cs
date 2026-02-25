@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Fahrenheit.Mods.CSR {
     internal unsafe static partial class Removers {
-        private static class AlBhedShip {
+        private static class CidsShip {
             public static void remove_underwater_ruins(byte* code_ptr) {
                 // Remove the initial cutscene of entering the ruins
                 remove(code_ptr, 0x3671, 3578);
