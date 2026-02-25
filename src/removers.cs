@@ -1,7 +1,4 @@
-﻿using Fahrenheit.Core.Atel;
-using Fahrenheit.Core.FFX;
-using System.Runtime.InteropServices;
-using TerraFX.Interop.Windows;
+﻿using System.Runtime.InteropServices;
 
 namespace Fahrenheit.Mods.CSR;
 
@@ -35,14 +32,14 @@ internal unsafe static partial class Removers {
         return ptr;
     }
 
-    private static byte* set(byte* code_ptr, uint[] offsets, AtelInst opcode) {
+    private static byte* set(byte* code_ptr, Span<uint> offsets, AtelInst opcode) {
         foreach (uint offset in offsets) {
             code_ptr = set(code_ptr, offset, opcode);
         }
         return code_ptr;
     }
 
-    private static byte* set(byte* code_ptr, uint offset, AtelInst[] opcodes) {
+    private static byte* set(byte* code_ptr, uint offset, Span<AtelInst> opcodes) {
         byte* ptr = code_ptr + offset;
         foreach (AtelInst op in opcodes) {
             foreach (byte b in op.to_bytes()) {
@@ -53,7 +50,7 @@ internal unsafe static partial class Removers {
         return ptr;
     }
 
-    private static byte* set(byte* code_ptr, uint[] offsets, AtelInst[] opcodes) {
+    private static byte* set(byte* code_ptr, Span<uint> offsets, Span<AtelInst> opcodes) {
         foreach (uint offset in offsets) {
             code_ptr = set(code_ptr, offset, opcodes);
         }

@@ -1,14 +1,8 @@
-﻿global using System;
-global using Fahrenheit.Core.FFX;
-
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Text.Json.Serialization;
 
 using Fahrenheit.Core;
-using Fahrenheit.Core.Atel;
 
 namespace Fahrenheit.Mods.CSR;
 
