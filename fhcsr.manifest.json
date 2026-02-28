@@ -4,7 +4,7 @@
   "Desc": "Automatically skip cutscenes, getting right to the gameplay! Highly configurable.\nBased on the CSR 1.X made by the speedrunning community.",
   "Authors": "The Fahrenheit Team and Community",
   "Version": "2.0.0-alpha",
-  "Link": "https://github.com/peppy-enterprises/fh-mods-csr",
+  "Link": "https://github.com/fahrenheit-crew/fh-mods-csr",
   "Dependencies": [],
   "LoadAfter": [],
   "Flags": "NONE"
