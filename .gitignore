@@ -1,0 +1,17 @@
+# IDE personal folders
+.vs
+.idea
+
+# Build/Publish folders
+bin
+obj
+release
+
+# Project assets folders
+assets
+
+# Obj files
+/obj/Fahrenheit.Mods.CSR.csproj.nuget.dgspec.json
+/obj/Fahrenheit.Mods.CSR.csproj.nuget.g.props
+/obj/project.assets.json
+/obj/project.nuget.cache
