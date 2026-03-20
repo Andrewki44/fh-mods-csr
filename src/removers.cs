@@ -4,19 +4,19 @@ namespace Fahrenheit.Mods.CSR;
 
 internal unsafe static partial class Removers {
     public static void init() {
-        CutsceneRemoverModule.removers.Add("znkd0600", DreamZanarkand.remove_intro);
-        CutsceneRemoverModule.removers.Add("znkd1000", DreamZanarkand.remove_prelude);
-        CutsceneRemoverModule.removers.Add("znkd1400", DreamZanarkand.remove_overpass);
-        CutsceneRemoverModule.removers.Add("znkd1300", DreamZanarkand.remove_stadium);
-        CutsceneRemoverModule.removers.Add("znkd1200", DreamZanarkand.remove_stadium_attacked);
+        //CutsceneRemoverModule.removers.Add("znkd0600", DreamZanarkand.remove_intro);
+        //CutsceneRemoverModule.removers.Add("znkd1000", DreamZanarkand.remove_prelude);
+        //CutsceneRemoverModule.removers.Add("znkd1400", DreamZanarkand.remove_overpass);
+        //CutsceneRemoverModule.removers.Add("znkd1300", DreamZanarkand.remove_stadium);
+        //CutsceneRemoverModule.removers.Add("znkd1200", DreamZanarkand.remove_stadium_attacked);
 
-        //CutsceneRemoverModule.removers.Add("cdsp0700", CidsShip.remove_underwater_ruins);
 
-        CutsceneRemoverModule.removers.Add("bsil0300", Besaid.remove_valley);
-        CutsceneRemoverModule.removers.Add("bsil0600", Besaid.remove_promontory);
-        CutsceneRemoverModule.removers.Add("bsil0700", Besaid.remove_village_slope);
+        //CutsceneRemoverModule.removers.Add("bsil0300", Besaid.remove_valley);
+        //CutsceneRemoverModule.removers.Add("bsil0600", Besaid.remove_promontory);
+        //CutsceneRemoverModule.removers.Add("bsil0700", Besaid.remove_village_slope);
 
-        //CutsceneRemoverModule.removers.Add("nagi0500", CavernOfTheStolenFayth.remove_stolen_fayth);
+        CutsceneRemoverModule.removers.Add("omeg0000", OmegaRuins.remove_intro);
+
     }
 
     private static void remove(byte* code_ptr, int from, int to) {
