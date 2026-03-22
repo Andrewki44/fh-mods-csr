@@ -4,6 +4,6 @@ namespace Fahrenheit.Mods.CSR;
 
 internal unsafe static partial class Removers {
     private static class ThunderPlains {
-        
+
     }
 }

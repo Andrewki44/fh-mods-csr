@@ -1,4 +1,6 @@
-﻿using System.Runtime.InteropServices;
+﻿// SPDX-License-Identifier: MIT
+
+using System.Runtime.InteropServices;
 
 namespace Fahrenheit.Mods.CSR;
 

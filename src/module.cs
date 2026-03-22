@@ -160,7 +160,8 @@ public unsafe class CutsceneRemoverModule : FhModule {
             _logger.Info($"Remover available for event \"{event_name}\"! Removing cutscenes...");
             byte* code_ptr = Globals.Atel.controllers[0].worker(0)->code_ptr;
             remover(code_ptr);
-        } else {
+        }
+        else {
             _logger.Info($"Remover not available for event \"{event_name}\".");
         }
     }

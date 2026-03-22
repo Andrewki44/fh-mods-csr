@@ -1,0 +1,72 @@
+﻿[*.cs]
+
+# guidelines
+guidelines = 100
+
+# copyright notice
+file_header_template = SPDX-License-Identifier: MIT
+
+# a final newline for sanity's sake
+insert_final_newline = true
+
+# Fahrenheit prefers block-bodied everything
+csharp_style_expression_bodied_constructors = false
+csharp_style_expression_bodied_methods = false
+csharp_style_expression_bodied_operators = false
+csharp_style_expression_bodied_properties = false
+csharp_style_expression_bodied_indexers = false
+csharp_style_expression_bodied_accessors = false
+csharp_style_expression_bodied_lambdas = false
+csharp_style_expression_bodied_local_functions = false
+
+# K&R style braces, for Evelyn
+csharp_new_line_before_open_brace = none
+
+# Do not fuck up vertical alignment during Code Cleanup.
+csharp_space_around_declaration_statements = ignore
+
+# CS8981: The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+dotnet_diagnostic.CS8981.severity = suggestion
+
+# IDE0071: Interpolation can be simplified.
+dotnet_diagnostic.IDE0071.severity = silent
+
+# Fahrenheit naming rules
+dotnet_naming_symbols.public_symbols.applicable_kinds           = property,method,field,event
+dotnet_naming_symbols.public_symbols.applicable_accessibilities = public
+
+dotnet_naming_symbols.const_symbols.applicable_kinds           = *
+dotnet_naming_symbols.const_symbols.applicable_accessibilities = public
+dotnet_naming_symbols.const_symbols.required_modifiers         = const
+
+dotnet_naming_style.snake_case.capitalization = all_lower
+dotnet_naming_style.snake_case.word_separator = _
+
+dotnet_naming_style.snake_case_caps.capitalization = all_upper
+dotnet_naming_style.snake_case_caps.word_separator = _
+
+dotnet_naming_rule.fh_naming.symbols  = public_symbols
+dotnet_naming_rule.fh_naming.style    = snake_case
+dotnet_naming_rule.fh_naming.severity = suggestion
+
+dotnet_naming_rule.fh_const_naming.symbols  = const_symbols
+dotnet_naming_rule.fh_const_naming.style    = snake_case_caps
+dotnet_naming_rule.fh_const_naming.severity = suggestion
+
+# Exempt any global using file from Code Cleanup
+# v. https://github.com/dotnet/roslyn/issues/3705#issuecomment-570687450
+
+[*Id.cs]
+generated_code = true
+
+[*AnimationCycle.cs]
+generated_code = true
+
+[*typedefs.cs]
+generated_code = true
+
+[*usings.cs]
+generated_code = true
+
+[*.g.cs]
+generated_code = true
