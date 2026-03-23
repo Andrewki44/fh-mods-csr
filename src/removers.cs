@@ -16,6 +16,7 @@ internal unsafe static partial class Removers {
         //CutsceneRemoverModule.removers.Add("bsil0300", Besaid.remove_valley);
         //CutsceneRemoverModule.removers.Add("bsil0600", Besaid.remove_promontory);
         //CutsceneRemoverModule.removers.Add("bsil0700", Besaid.remove_village_slope);
+        CutsceneRemoverModule.removers.Add("bsil0100", Besaid.ss_liki_departs);
 
         CutsceneRemoverModule.removers.Add("bvyt0000", Bevelle.remove_intro);
 
