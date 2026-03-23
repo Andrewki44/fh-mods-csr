@@ -1,20 +1,20 @@
 ﻿// SPDX-License-Identifier: MIT
 
-namespace Fahrenheit.Mods.CSR; 
+namespace Fahrenheit.Mods.CSR;
 
 internal unsafe static partial class Removers {
     private static class DreamZanarkand {
         public static void remove_intro(byte* code_ptr) {
             // We basically write our own script here
-             set(code_ptr, 0x3DC4, [
-                 AtelOp.PUSHV.build(0x0),
+            set(code_ptr, 0x3DC4, [
+                AtelOp.PUSHV.build(0x0),
                  AtelOp.PUSHII.build(0x2),
                  AtelOp.LS.build(),           // if (GameMoment < 2)
                  AtelOp.POPXCJMP.build(0x13), // goto intro_exit
                                               // else
                  AtelOp.JMP.build(0xE),       // goto midgame_exit
                  AtelOp.RET.build()           // return; // not actually necessary?
-             ]);
+            ]);
 
             // Set the story progress higher than normal to skip the prelude camera pan
             set(code_ptr, 0x4450, AtelOp.PUSHII.build(3)); // GameMoment = 2 -> 3
