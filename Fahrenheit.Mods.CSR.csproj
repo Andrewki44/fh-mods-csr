@@ -3,5 +3,6 @@
         <AssemblyName>fhcsr</AssemblyName>
         <AssemblyTitle>Fahrenheit port of the Cutscene Remover for Final Fantasy X/X-2</AssemblyTitle>
         <Product>Fahrenheit port of the Cutscene Remover for Final Fantasy X/X-2</Product>
+		<IsPublishable>false</IsPublishable>
     </PropertyGroup>
 </Project>

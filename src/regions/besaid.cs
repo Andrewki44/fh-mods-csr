@@ -30,5 +30,14 @@ internal unsafe static partial class Removers {
 
             set_tp(code_ptr, 0x264D, 0xD, 0xE, 0xF); // Set player position to the vanilla post-cutscene one
         }
+
+        public static void ss_liki_departs(byte* code_ptr) {
+            // bsil0100 (Besaid - Port)
+            remove(code_ptr, 0x8F56, 0x8FDD);   // w15e04
+            remove(code_ptr, 0x8FED, 0x922B);   // w15e05
+            // call Common.addPartyMember [00CAh](playerChar=Kimahri [03h]);
+            // Set GameMoment = 220 [DCh];
+            // call Common.warpToRoom? [010Bh](room=slik0000 (S.S. Liki - Deck) [012Dh], spawnpoint=0 [00h]);
+        }
     }
 }
