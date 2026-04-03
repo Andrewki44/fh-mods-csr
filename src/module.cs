@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 
+using Fahrenheit.Events;
 using System.IO;
 using System.Runtime.InteropServices;
 
@@ -33,6 +34,8 @@ public unsafe class CutsceneRemoverModule : FhModule {
 
     public override bool init(FhModContext mod_context, FileStream global_state_file) {
         Removers.init();
+
+        FhApi.Events.Common.GameLoop.PostUpdate.subscribe(post_update);
 
         return _csr_event.hook()
             && _work_debug.hook();
@@ -142,7 +145,7 @@ public unsafe class CutsceneRemoverModule : FhModule {
     //     draw_text(0, works.ToArray(), x, y, color: 0x00, 0, scale: 0.5f, 0);
     // }
 
-    public override void post_update() {
+    public void post_update(UpdateLoopEventArgs args) {
         for (int i = 0; i < rew.Count; i++) {
             var o = rew[i];
             o.last_updated++;
