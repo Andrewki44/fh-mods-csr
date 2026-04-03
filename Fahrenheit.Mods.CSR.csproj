@@ -1,8 +1,11 @@
-﻿<Project Sdk="Fahrenheit.Sdk/1.0.0-alpha08">
+﻿<Project Sdk="Fahrenheit.Sdk/1.0.0-alpha09">
     <PropertyGroup>
         <AssemblyName>fhcsr</AssemblyName>
         <AssemblyTitle>Fahrenheit port of the Cutscene Remover for Final Fantasy X/X-2</AssemblyTitle>
         <Product>Fahrenheit port of the Cutscene Remover for Final Fantasy X/X-2</Product>
 		<IsPublishable>false</IsPublishable>
     </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Update="Fahrenheit" Version="1.0.0-alpha09" />
+    </ItemGroup>
 </Project>
