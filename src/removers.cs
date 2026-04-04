@@ -12,7 +12,7 @@ internal unsafe static partial class Removers {
         //CutsceneRemoverModule.removers.Add("znkd1300", DreamZanarkand.remove_stadium);
         //CutsceneRemoverModule.removers.Add("znkd1200", DreamZanarkand.remove_stadium_attacked);
 
-        CutsceneRemoverModule.removers.Add("bjyt0200", BaajTemple.second_visit_dive);
+        //CutsceneRemoverModule.removers.Add("bjyt0200", BaajTemple.second_visit_dive);
 
         //CutsceneRemoverModule.removers.Add("bsil0300", Besaid.remove_valley);
         //CutsceneRemoverModule.removers.Add("bsil0600", Besaid.remove_promontory);
