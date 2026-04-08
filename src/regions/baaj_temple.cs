@@ -12,11 +12,10 @@ internal unsafe static partial class Removers {
             remove(code_ptr, 0x9D38, 0x9D41);
 
             // w1Be08
-            remove(code_ptr, 0x92A1, 0x92A7); // w0Ce45
+            remove(code_ptr, 0x92A1, 0x92A7); // call Common.wait [0000h](frames=5 [05h]);
 
             //// w00e1C- Common.warpToPoint and sets swimming movement etc
-            remove(code_ptr, 0x0303, 0x031E);
-            remove(code_ptr, 0x032A, 0x035A);
+            remove(code_ptr, 0x0303, 0x035A);
 
             //// w10e18 - Common.playSfxWithParams 
             remove(code_ptr, 0x92BD, 0x92F7); // await w00e1C
