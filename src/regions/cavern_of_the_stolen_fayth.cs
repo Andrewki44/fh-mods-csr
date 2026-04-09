@@ -9,7 +9,7 @@ internal unsafe static partial class Removers {
             //Globals.save_data->progression_flags_calm_lands_quest.set_bit(0, true);
         }
 
-        public static void who_would_put_a_fayth_here(byte* code_ptr) {
+        public static void cavern_backstory(byte* code_ptr) {
             // nagi0500 (Cavern of the Stolen Fayth)
 
             // w25cross --> w19e06
