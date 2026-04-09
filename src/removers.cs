@@ -21,6 +21,8 @@ internal unsafe static partial class Removers {
 
         CutsceneRemoverModule.removers.Add("bvyt0000", Bevelle.remove_intro);
 
+        CutsceneRemoverModule.removers.Add("nagi0500", CavernOfTheStolenFayth.who_would_put_a_fayth_here);
+
         CutsceneRemoverModule.removers.Add("omeg0000", OmegaRuins.remove_intro);
 
     }
