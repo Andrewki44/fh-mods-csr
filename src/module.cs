@@ -165,7 +165,7 @@ public unsafe class CutsceneRemoverModule : FhModule {
             remover(code_ptr);
         }
         else {
-            _logger.Info($"Remover not available for event \"{event_name}\".");
+            _logger.Debug($"Remover not available for event \"{event_name}\".");
         }
     }
 }
