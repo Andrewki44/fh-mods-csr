@@ -14,9 +14,10 @@ internal unsafe static partial class Removers {
 
         CutsceneRemoverModule.removers.Add("bjyt0200", BaajTemple.second_visit_dive);
 
-        //CutsceneRemoverModule.removers.Add("bsil0300", Besaid.remove_valley);
+        CutsceneRemoverModule.removers.Add("bsil0000", Besaid.beach_intro);
+        CutsceneRemoverModule.removers.Add("bsil0300", Besaid.valley);
         //CutsceneRemoverModule.removers.Add("bsil0600", Besaid.remove_promontory);
-        //CutsceneRemoverModule.removers.Add("bsil0700", Besaid.remove_village_slope);
+        CutsceneRemoverModule.removers.Add("bsil0700", Besaid.village_slope);
         CutsceneRemoverModule.removers.Add("bsil0100", Besaid.ss_liki_departs);
 
         CutsceneRemoverModule.removers.Add("bvyt0000", Bevelle.remove_intro);
@@ -67,9 +68,11 @@ internal unsafe static partial class Removers {
 
     private static void set_tp(byte* code_ptr, int offset, ushort x_idx, ushort y_idx, ushort z_idx) {
         byte* ptr = code_ptr + offset;
-        set(ptr, 0x0, AtelOp.PUSHF.build(x_idx));
-        set(ptr, 0x3, AtelOp.PUSHF.build(y_idx));
-        set(ptr, 0x6, AtelOp.PUSHF.build(z_idx));
-        set(ptr, 0x9, AtelOp.CALLPOPA.build(0x126));
+        set(ptr, 0x0000, [
+            AtelOp.PUSHF.build(x_idx),
+            AtelOp.PUSHF.build(y_idx),
+            AtelOp.PUSHF.build(z_idx),
+            AtelOp.CALLPOPA.build(0x126)
+        ]);
     }
 }

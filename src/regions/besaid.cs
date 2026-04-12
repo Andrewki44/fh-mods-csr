@@ -4,7 +4,39 @@ namespace Fahrenheit.Mods.CSR;
 
 internal unsafe static partial class Removers {
     private static class Besaid {
-        public static void remove_valley(byte* code_ptr) {
+        public static void beach_intro(byte* code_ptr) {
+            // bsil0000 (Besaid - Port)
+
+            remove(code_ptr, 0x0003, 0x0009); // Fadeout to black
+            // Setup party
+            // Set GameMoment = 111 [6Fh];
+            remove(code_ptr, 0x0082, 0x00DF); // Save Game prompt
+            // Sets position and motion group
+
+            // w13 - Tidus face-down in water
+            // init
+            remove(code_ptr, 0x6B04, 0x6B0B);
+            set(code_ptr, 0x6B04, AtelOp.JMP.build(00));
+            //AE7000 A00000                                    Set GameMoment = 112 [70h];
+            // main
+            remove(code_ptr, 0x6B18, 0x6B30);
+            set(code_ptr, 0x6B18, [             // Set GameMoment to 112 & 113, since we are bypassing where they are set
+                AtelOp.PUSHII   .build(112),
+                AtelOp.POPV     .build(0),
+                AtelOp.PUSHII   .build(113),
+                AtelOp.POPV     .build(0),
+            ]);
+
+
+            //remove(code_ptr, 0x6B4D, 0x7150);
+            //// Set GameMoment = 112 [70h];
+            //remove(code_ptr, 0x7161, 0x7168);
+            //remove(code_ptr, 0x71B5, 0x71BC);
+            //// Set GameMoment = 113 [71h];
+            //// Enable player control, gravity mode, camera, etc.
+        }
+
+        public static void valley(byte* code_ptr) {
             remove(code_ptr, 0x1B29, 0x1C43); // Wakka pushes Tidus into the water
 
             remove(code_ptr, 0x1CFC, 0x1FCF); // Wakka asks Tidus to join the Aurochs
@@ -19,11 +51,11 @@ internal unsafe static partial class Removers {
             remove(code_ptr, 0x3398, 0x33C6); // Initial fadeout into cutscene
         }
 
-        public static void remove_promontory(byte* code_ptr) {
-            remove(code_ptr, 0x3DB4, 0x3EAD); // Cutscene coming from Valley DEPRECATED
-        }
+        //public static void remove_promontory(byte* code_ptr) {
+        //    remove(code_ptr, 0x3DB4, 0x3EAD); // Cutscene coming from Valley DEPRECATED
+        //}
 
-        public static void remove_village_slope(byte* code_ptr) {
+        public static void village_slope(byte* code_ptr) {
             remove(code_ptr, 0x264D, 0x289A); // First cutscene
 
             remove(code_ptr, 0x28B7, 0x28C0); // Don't make the game wait for a fade that won't happen
@@ -33,8 +65,10 @@ internal unsafe static partial class Removers {
 
         public static void ss_liki_departs(byte* code_ptr) {
             // bsil0100 (Besaid - Port)
+
             remove(code_ptr, 0x8F56, 0x8FDD);   // w15e04
             remove(code_ptr, 0x8FED, 0x922B);   // w15e05
+
             // call Common.addPartyMember [00CAh](playerChar=Kimahri [03h]);
             // Set GameMoment = 220 [DCh];
             // call Common.warpToRoom? [010Bh](room=slik0000 (S.S. Liki - Deck) [012Dh], spawnpoint=0 [00h]);
