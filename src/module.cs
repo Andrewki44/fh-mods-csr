@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: MIT
 
-using Fahrenheit.Events;
 using System.IO;
 using System.Runtime.InteropServices;
 
